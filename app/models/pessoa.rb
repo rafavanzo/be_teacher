@@ -4,6 +4,6 @@ class Pessoa < ApplicationRecord
   validates :nome, :cpf, :sexo, :data_nascimento, :email, :senha, presence: true
 
   validates :email, uniqueness: true
- #teste
+
   validates :sexo, inclusion: { in: %w(M F) }
 end
