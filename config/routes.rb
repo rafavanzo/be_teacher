@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   resources :pessoas, only: :create
   resource :session, only: :show, path: "login"
-  resources :aulas, only: %i[index create show]
+  resources :aulas, only: %i[index create show destroy]
+  resources :aulas_pessoas, only: %i[create index show]
 end

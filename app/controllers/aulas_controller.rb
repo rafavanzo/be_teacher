@@ -19,8 +19,18 @@ class AulasController < ApplicationController
     aula = Aula.find(params[:id])
 
     render json: aula
-  rescue ActiveRecord::RecordNotFound
-    render json: { message: "Aula não encontrada" }, status: :not_found
+    rescue ActiveRecord::RecordNotFound
+      render json: { message: "Aula não encontrada" }, status: :not_found
+  end
+
+  def destroy
+    aula = Aula.find(params[:id])
+
+    if aula.destroy
+      render json: { message: "Aula deletada com sucesso" }, status: :ok
+    else
+      render json: { message: "Erro ao deletar a aula" }, status: :not_found
+    end
   end
 
   private
