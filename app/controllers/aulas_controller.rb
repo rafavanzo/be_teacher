@@ -16,7 +16,7 @@ class AulasController < ApplicationController
   end
 
   def show
-    aula = Aula.find(params[:id])
+    aula = Aula.find(params[:id], order: "created_at DESC")
 
     render json: aula
     rescue ActiveRecord::RecordNotFound
