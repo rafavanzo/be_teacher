@@ -9,6 +9,12 @@ class PessoasController < ApplicationController
     end
   end
 
+  def index
+    aulas = Pessoa.all.order(:created_at => :desc)
+
+    render json: aulas
+  end
+
   private
 
   def pessoa_params
