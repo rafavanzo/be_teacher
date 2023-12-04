@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_04_043022) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_043130) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_043022) do
     t.string "conteudo", null: false
   end
 
+  create_table "aulas_pessoas", id: false, force: :cascade do |t|
+    t.bigint "aula_id", null: false
+    t.bigint "pessoa_id", null: false
+    t.index ["aula_id", "pessoa_id"], name: "index_aulas_pessoas_on_aula_id_and_pessoa_id", unique: true
+    t.index ["aula_id"], name: "index_aulas_pessoas_on_aula_id"
+    t.index ["pessoa_id"], name: "index_aulas_pessoas_on_pessoa_id"
+  end
+
   create_table "pessoas", force: :cascade do |t|
     t.string "nome", null: false
     t.string "cpf", null: false
@@ -35,4 +43,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_043022) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "aulas_pessoas", "aulas"
+  add_foreign_key "aulas_pessoas", "pessoas"
 end
