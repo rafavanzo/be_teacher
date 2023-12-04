@@ -36,6 +36,6 @@ class AulasController < ApplicationController
   private
 
   def aula_params
-    params.require(:aula).permit(:materia, :data, :hora_inicio, :hora_fim)
+    params.require(:aula).permit(:materia, :data, :hora_inicio, :hora_fim, :conteudo)
   end
 end
