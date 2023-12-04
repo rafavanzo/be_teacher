@@ -33,9 +33,19 @@ class AulasController < ApplicationController
     end
   end
 
+  def show_aula_where_ids
+    aula_ids = params[:id].split(',').map(&:to_i)
+    aulas = Aula.where(id: aula_ids)
+
+    render json: aulas
+  rescue ActiveRecord::RecordNotFound
+    render json: { message: "Aula não encontrada" }, status: :not_found
+  end
+  
+
   private
 
   def aula_params
-    params.require(:aula).permit(:materia, :data, :hora_inicio, :hora_fim, :conteudo)
+    params.require(:aula).permit(:id, :materia, :data, :hora_inicio, :hora_fim, :conteudo)
   end
 end

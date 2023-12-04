@@ -10,7 +10,7 @@ class AulasPessoasController < ApplicationController
   end
 
   def index
-    aula_pessoa = AulaPessoa.find(params[:pessoa_id])
+    aula_pessoa = AulaPessoa.where(pessoa_id: params[:pessoa_id])
 
     render json: aula_pessoa
     rescue ActiveRecord::RecordNotFound
@@ -25,8 +25,9 @@ class AulasPessoasController < ApplicationController
         render json: { message: "Aula não encontrada" }, status: :not_found
   end
 
-  def destroy 
-    aula_pessoa = AulaPessoa.find(params[:id])
+  def destroy
+    aula_pessoa_int = (params[:id]).to_i
+    aula_pessoa = AulaPessoa.find_by(aula_id: aula_pessoa_int)
 
     if aula_pessoa.destroy
       render json: { message: "Aula cancelada com sucesso" }, status: :ok
@@ -34,6 +35,7 @@ class AulasPessoasController < ApplicationController
       render json: { message: "Erro ao cancelar a aula" }, status: :not_found
     end
   end
+
   private
 
   def aula_pessoa_params
