@@ -36,7 +36,7 @@ class AulasPessoasController < ApplicationController
   end
   private
 
-  def pessoa_params
+  def aula_pessoa_params
       params.require(:aula_pessoa).permit(:aula_id, :pessoa_id)
   end
 end
