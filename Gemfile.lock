@@ -133,7 +133,7 @@ GEM
     pry-byebug (3.10.1)
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
-    psych (5.1.1.1)
+    psych (5.1.2)
       stringio
     puma (6.4.0)
       nio4r (~> 2.0)
@@ -178,7 +178,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.1.0)
-    rdoc (6.6.0)
+    rdoc (6.6.3.1)
       psych (>= 4.0.0)
     reline (0.4.1)
       io-console (~> 0.5)
